@@ -61,3 +61,29 @@ Update `terraform/terraform.tfvars` with the Terraform storage account and state
     key                  = "terraform.tfstate"
 
 ```
+
+We create now our Virtual Machine myLinuxVM and we log into it `ssh devopsagent@20.172.154.102`
+
+### Setting up Azure DevOps
+
+Create a free [Azure DevOps account](https://azure.microsoft.com/en-us/services/devops/) if you haven't already and install the [Terraform Extension for Pipelines](https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks).
+
+Create a new project:
+Create a new PAT: myPAT and we cpoy the personal access token
+Create a new service connection: 
+Create a new Agent Pool: myAgentPool
+
+We will use our VM as an agent 
+
+curl -O https://vstsagentpackage.azureedge.net/agent/2.210.1/vsts-agent-linux-x64-2.210.1
+mkdir myagent && cd myagent
+tar zxvf ../vsts-agent-linux-x64-2.210.1.tar.gz
+./config.sh
+sudo ./svc.sh install
+sudo ./svc.sh start
+
+Create a new environment: TEST
+
+we copy the registration script and we run it in the VM 
+
+We move to library and we add azsecret as variable group and ssh key on secure files 
