@@ -15,7 +15,7 @@ terraform {
 }
 
 data "azurerm_resource_group" "test" {
-  name = "tfstate"
+  name = "Azuredevops"
 }
 
 module "network" {
