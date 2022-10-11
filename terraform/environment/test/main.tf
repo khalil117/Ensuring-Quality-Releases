@@ -14,6 +14,9 @@ terraform {
   }
 }
 
+data "azurerm_resource_group" "test" {
+  name = "tfstate"
+}
 
 module "network" {
   source               = "../../modules/network"
