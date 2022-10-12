@@ -90,4 +90,8 @@ We move to library and we add azsecret as variable group and ssh key on secure f
 
 sudo apt-get -y install zip 
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash 
+<<<<<<< HEAD
 sudo apt-get install npm 
+=======
+sudo apt-get install npm 
+>>>>>>> f4db22d770d8d0b4526c5b23ca75848b682da7f3

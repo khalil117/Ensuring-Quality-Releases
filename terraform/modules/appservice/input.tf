@@ -1,4 +1,3 @@
-# Resource Group/Location
 variable "location" {}
 
 variable "application_type" {}

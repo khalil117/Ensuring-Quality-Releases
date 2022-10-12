@@ -13,6 +13,7 @@ terraform {
     access_key           = ""
   }
 }
+<<<<<<< HEAD
 # module "resource_group" {
 #   source               = "../../modules/resource_group"
 #   resource_group       = "${var.resource_group}"
@@ -21,7 +22,13 @@ terraform {
 
 data "azurerm_resource_group" "test" {
   name = "tfstate"
+=======
+
+data "azurerm_resource_group" "test" {
+  name = "Azuredevops"
+>>>>>>> f4db22d770d8d0b4526c5b23ca75848b682da7f3
 }
+
 module "network" {
   source               = "../../modules/network"
   address_space        = "${var.address_space}"
@@ -55,4 +62,17 @@ module "publicip" {
   application_type = "${var.application_type}"
   resource_type    = "publicip"
   resource_group   = "${data.azurerm_resource_group.test.name}"
+<<<<<<< HEAD
 }
+=======
+}
+  module "vm" {
+  source               = "../../modules/vm"
+  location             = "${var.location}"
+  resource_group       = data.azurerm_resource_group.test.name  
+  application_type     = "${var.application_type}"
+  resource_type        = "VM"
+  subnet_id            = "${module.network.subnet_id_test}"
+  public_ip            = "${module.publicip.public_ip_address_id}"
+}
+>>>>>>> f4db22d770d8d0b4526c5b23ca75848b682da7f3
