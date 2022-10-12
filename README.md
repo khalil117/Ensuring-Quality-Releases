@@ -76,7 +76,7 @@ Create a new Agent Pool: myAgentPool
 We will use our VM as an agent 
 
 curl -O https://vstsagentpackage.azureedge.net/agent/2.210.1/vsts-agent-linux-x64-2.210.1
-mkdir myagent && cd myagent
+mkdir myagent && cd myagent./
 tar zxvf ../vsts-agent-linux-x64-2.210.1.tar.gz
 ./config.sh
 sudo ./svc.sh install
