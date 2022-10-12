@@ -21,7 +21,7 @@ terraform {
 
 data "azurerm_resource_group" "test" {
   name = "Azuredevops"
-
+}
 
 module "network" {
   source               = "../../modules/network"
