@@ -57,7 +57,7 @@ module "publicip" {
   resource_type    = "publicip"
   resource_group   = "${data.azurerm_resource_group.test.name}"
 }
-}
+
   module "vm" {
   source               = "../../modules/vm"
   location             = "${var.location}"
