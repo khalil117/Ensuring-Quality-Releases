@@ -87,3 +87,7 @@ Create a new environment: TEST
 we copy the registration script and we run it in the VM 
 
 We move to library and we add azsecret as variable group and ssh key on secure files 
+
+sudo apt-get -y install zip 
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash 
+sudo apt-get install npm 
