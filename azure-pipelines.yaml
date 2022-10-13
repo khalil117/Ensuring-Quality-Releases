@@ -113,8 +113,7 @@ stages:
     jobs:
       - deployment: deploy_fakerestapi
         displayName: Deploy FakeRestAPI
-        pool:
-          vmImage: 'ubuntu-latest'
+        pool: myAgentPool
         environment: 'TEST'
         strategy:
           runOnce:
@@ -156,8 +155,7 @@ stages:
     jobs:
     - job: IntegrationTests
       displayName: Integration Tests For UI and Selenium
-      pool:
-        vmImage: 'ubuntu-latest'
+      pool: myAgentPool
       steps:
       - task: CmdLine@2
         displayName: Install Newman
@@ -233,8 +231,7 @@ stages:
 
     - job: PerformanceTest
       displayName: Test JMeter
-      pool:
-        vmImage: 'ubuntu-latest'
+      pool: myAgentPool
       steps:
           - bash: |
               sudo apt-get install openjdk-11-jre-headless -y
