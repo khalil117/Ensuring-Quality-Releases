@@ -75,7 +75,7 @@ Create a new Agent Pool: myAgentPool
 
 We will use our VM as an agent 
 
-curl -O https://vstsagentpackage.azureedge.net/agent/2.210.1/vsts-agent-linux-x64-2.210.1
+curl -O https://vstsagentpackage.azureedge.net/agent/2.210.1/vsts-agent-linux-x64-2.210.1.tar.gz
 mkdir myagent && cd myagent./
 tar zxvf ../vsts-agent-linux-x64-2.210.1.tar.gz
 ./config.sh
@@ -91,3 +91,5 @@ We move to library and we add azsecret as variable group and ssh key on secure f
 sudo apt-get -y install zip 
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash 
 sudo apt-get install npm 
+
+Now it's time to create our pipeline, we need to add variable public_key and run it 
