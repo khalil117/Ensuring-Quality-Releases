@@ -166,8 +166,12 @@ The next step is to upload our azsecret.conf to Azure Devops as a Secure File, t
 
 Same steps will be done with  ```az_eqr_id_rsa``` , ```az_eqr_id_rsa.pub``` and ```known_hosts```
 
-sudo apt-get -y install zip 
+We run the following command on our VM
+
+sudo apt-get -y install zip
+
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash 
+
 sudo apt-get install npm 
 
 Now it's time to create our pipeline, we need to add variable public_key and run it 
