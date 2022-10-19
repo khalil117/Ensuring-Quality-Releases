@@ -174,4 +174,8 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 sudo apt-get install npm 
 
-Now it's time to create our pipeline, we need to add variable public_key and run it 
+We are ready to run the Provision stage of our pipeline.
+
+If all the configuration was correct, then the terraform apply command should be successful, and our resources should be deployed to the cloud.
+
+https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG
