@@ -41,17 +41,17 @@ az login
 
 Terraform supports the persisting of state in remote storage. See [Tutorial: Store Terraform state in Azure Storage](https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage) for details or follow the instructions below.
 
-Firstly, execute the `create-tf-storage.sh` script:
+Firstly, execute the `config.sh` script:
 
 ```bash
-bash create-tf-storage.sh
+bash config.sh
 ```
-
-Update `terraform/terraform.tfvars` with the Terraform storage account and state backend configuration variables:
+We will get 3 outputs:
 
 - `storage_account_name`: The name of the Azure Storage account
 - `container_name`: The name of the blob container
 - `key`: The name of the state store file to be created
+Update `terraform/terraform.tfvars` with the Terraform storage account and state backend configuration variables:
 
 ```bash
 
@@ -61,6 +61,64 @@ Update `terraform/terraform.tfvars` with the Terraform storage account and state
     key                  = "terraform.tfstate"
 
 ```
+Update `terraform/main.tf` with the Terraform storage account and state backend configuration variables:  
+
+### Create a Service Principal for Terraform
+In the ```main.tf``` file we need the following data:
+- tenant_id
+- subscription_id
+- client_id
+- client_secret
+
+
+For this we have to obtain our subscription_id with the followging command:
+
+```Bash
+az account show
+```
+
+Copy the "id" field. Now it is time to create the service principal, input the following command:
+
+```Bash
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/your-subscription-id"
+```
+
+We will get an output similar to this:
+```Bash
+{
+  "appId": "00000000-0000-0000-0000-000000000000",
+  "displayName": "azure-cli-2017-06-05-10-41-15",
+  "name": "9d778b04-cfbe-4f86-947e-000000000000",
+  "password": "0000-0000-0000-0000-000000000000",
+  "tenant": "00000000-0000-0000-0000-000000000000"
+}
+```
+
+These values map to the Terraform variables like so:
+
+- appId is the client_id defined above.
+- password is the client_secret defined above.
+- tenant is the tenant_id defined above.
+- `storage_account_name`: The name of the Azure Storage account
+- `container_name`: The name of the blob container
+- `key`: The name of the state store file to be created
+
+We will add this values to our ```azurecreds.conf``` file, so at the end we will have data similar to this in our conf file:
+```Bash
+subscription_id = "12345678-b866-4328-925f-123456789"
+client_id = "00000000-0000-0000-0000-000000000000"
+client_secret = "0000-0000-0000-0000-000000000000"
+tenant_id = "00000000-0000-0000-0000-000000000000"
+
+storage_account_name = "tfstate32602"
+container_name = "tstate"
+key = "test.terraform.tfstate"
+access_key = "bGCCY94tbnC8CMouMJq4+at1Q8s+mHaDQlfsdeWKZHsboOGAm9DXiV0lRWxW5hJVyLME3VhPuBvI+AStdzgrtg=="
+```
+
+We are now ready to configure an Azure DevOps Pipeline.
+
+
 
 We create now our Virtual Machine myLinuxVM and we log into it `ssh devopsagent@20.172.154.102`
 
