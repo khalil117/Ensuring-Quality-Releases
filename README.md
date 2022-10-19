@@ -120,31 +120,51 @@ We are now ready to configure an Azure DevOps Pipeline.
 
 
 
-We create now our Virtual Machine myLinuxVM and we log into it `ssh devopsagent@20.172.154.102`
+Before we setting up our Pipeline , We create  our Virtual Machine `myLinuxVM` and we log into it `ssh devopsagent@20.172.154.102`
 
 ### Setting up Azure DevOps
 
 Create a free [Azure DevOps account](https://azure.microsoft.com/en-us/services/devops/) if you haven't already and install the [Terraform Extension for Pipelines](https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks).
 
 Create a new project:
+
 Create a new PAT: myPAT and we cpoy the personal access token
+
 Create a new service connection: 
+
 Create a new Agent Pool: myAgentPool
+
+We will need to install Terraform extension from Microsoft DevLabs to use terraform in our DevOps Project, install it from the following URL: https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks
 
 We will use our VM as an agent 
 
+
 curl -O https://vstsagentpackage.azureedge.net/agent/2.210.1/vsts-agent-linux-x64-2.210.1.tar.gz
+
 mkdir myagent && cd myagent
+
 tar zxvf ../vsts-agent-linux-x64-2.210.1.tar.gz
+
 ./config.sh
+
 sudo ./svc.sh install
+
 sudo ./svc.sh start
 
 Create a new environment: TEST
 
 we copy the registration script and we run it in the VM 
 
-We move to library and we add azsecret as variable group and ssh key on secure files 
+We will also need a variables group, we will add the following data in a variable group named ```azsecret```:
+- client_id: 'your-client-id'
+- client_secret: 'your-client-secret' (click on the lock to change it to a secret variable)
+- subscription_id: 'your-subscription-id'
+- tenant_id: 'your-tenant-id'
+- public_key: 'your-public-key'
+
+The next step is to upload our azsecret.conf to Azure Devops as a Secure File, to do this we have to navigate to Pipelines -> Library -> Secure Files -> + Secure File -> Upload File. Now the file should be uploaded.
+
+Same steps will be done with  ```az_eqr_id_rsa``` , ```az_eqr_id_rsa.pub``` and ```known_hosts```
 
 sudo apt-get -y install zip 
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash 
