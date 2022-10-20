@@ -1,5 +1,8 @@
 # Udacity Cloud DevOps using Microsoft Azure Nanodegree Program - Project: Ensuring Quality Releases
 
+## Status
+
+
 
 ## Introduction
 
@@ -178,4 +181,5 @@ We are ready to run the Provision stage of our pipeline.
 
 If all the configuration was correct, then the terraform apply command should be successful, and our resources should be deployed to the cloud.
 
-https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG
+![Badge](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG)
+
