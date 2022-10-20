@@ -2,7 +2,7 @@
 
 ## Status
 
-
+![Badge](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG)
 
 ## Introduction
 
@@ -141,7 +141,7 @@ We will need to install Terraform extension from Microsoft DevLabs to use terraf
 
 We will use our VM as an agent 
 
-
+```Bash
 curl -O https://vstsagentpackage.azureedge.net/agent/2.210.1/vsts-agent-linux-x64-2.210.1.tar.gz
 
 mkdir myagent && cd myagent
@@ -153,6 +153,7 @@ tar zxvf ../vsts-agent-linux-x64-2.210.1.tar.gz
 sudo ./svc.sh install
 
 sudo ./svc.sh start
+```
 
 Create a new environment: TEST
 
@@ -171,15 +172,44 @@ Same steps will be done with  ```az_eqr_id_rsa``` , ```az_eqr_id_rsa.pub``` and 
 
 We run the following command on our VM
 
-sudo apt-get -y install zip
+```sudo apt-get -y install zip```
 
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash 
+```curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash ```
 
-sudo apt-get install npm 
+```sudo apt-get install npm ```
 
 We are ready to run the Provision stage of our pipeline.
 
 If all the configuration was correct, then the terraform apply command should be successful, and our resources should be deployed to the cloud.
 
-![Badge](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG)
+![terraformApply](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG)
+
+
+
+## Create Postman Test Suites
+
+## Create a Test Suite with JMeter
+
+## Create a Selenium test for a website
+
+## Enable Monitoring & Observability
+
+In this final section, we will enable Monitoring & Observability in our Virtual Machine and App Service to observe the effects of our tests.
+
+To run the Deploy stage of our pipeline we must configure an Azure Log Analytics Workspace before running the Deploy Virtual Machine task. To do this run the ```setup-log-analytics.sh``` file in the deployments directory, modify as needed and refer to the official Microsoft documentation if needed: https://docs.microsoft.com/en-us/azure/azure-monitor/logs/resource-manager-workspace
+
+After that, navigate to the Azure Portal, go to the resource group where the Workspace was created, click on the resource and navigate to Settings -> Agents Management.
+
+![Log Analytics Agents Management](images/loganalyticsagentsmanagement.PNG)
+
+Navigate to Linux Servers and there will be the script to install the Linux Agent in our Virtual Machine.
+
+For security, copy the Workspace ID and the Primary Key, set them up in our variables group, and reference them as an Environment variable in the pipeline.
+
+We are ready to run the Deploy stage of the pipeline!
+
+If everything worked as intented, we should see "1 Linux computers connected" in the Agents Management in the Log Analytics Workspace.
+
+![1 Linux Server Connected](images/serverconnected.PNG)
+
 
