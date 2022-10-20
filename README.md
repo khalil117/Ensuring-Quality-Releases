@@ -2,7 +2,7 @@
 
 ## Status
 
-![Badge](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG)
+![Badge](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/badget.PNG?raw=true)
 
 ## Introduction
 
