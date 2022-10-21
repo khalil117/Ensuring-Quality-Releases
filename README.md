@@ -30,7 +30,6 @@ The following are the dependencies of the project you will need:
   - [Python](https://www.python.org/downloads/)
   - [Selenium](https://sites.google.com/a/chromium.org/chromedriver/getting-started)
 
-## Instructions
 
 ### Login with Azure CLI
 
@@ -185,12 +184,26 @@ If all the configuration was correct, then the terraform apply command should be
 ![terraformApply](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG)
 
 
+## Instructions
 
-## Create Postman Test Suites
 
-## Create a Test Suite with JMeter
+### Regression test
 
-## Create a Selenium test for a website
+![regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/regression_test.PNG?raw=true)
+
+### Validation test
+
+![regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/validation_tests.PNG?raw=true)
+
+### Publish Test Results
+
+![regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/Junit_regression_test.PNG?raw=true)
+
+![regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/validation_tests.PNG?raw=true)
+
+### Selenium Test Result
+
+![regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/validation_tests.PNG?raw=true)
 
 ## Enable Monitoring & Observability
 
@@ -200,7 +213,6 @@ To run the Deploy stage of our pipeline we must configure an Azure Log Analytics
 
 After that, navigate to the Azure Portal, go to the resource group where the Workspace was created, click on the resource and navigate to Settings -> Agents Management.
 
-![Log Analytics Agents Management](images/loganalyticsagentsmanagement.PNG)
 
 Navigate to Linux Servers and there will be the script to install the Linux Agent in our Virtual Machine.
 
