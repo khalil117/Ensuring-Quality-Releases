@@ -9,6 +9,7 @@
 This project uses Microsoft Azure and a variety of industry leading tools to create disposable test environments and run a variety of automated tests with the click of a button. 
 Additionally it monitors and provides insight into the application's behavior, and determines root causes by querying the application’s custom log files.
 
+![Structure](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/structure.PNG?raw=true)
 
 ## Getting Started
 
@@ -197,13 +198,13 @@ If all the configuration was correct, then the terraform apply command should be
 
 ### Publish Test Results
 
-![regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/Junit_regression_test.PNG?raw=true)
+![Junit_regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/Junit_regression_test.PNG?raw=true)
 
-![regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/validation_tests.PNG?raw=true)
+![Junit_validation_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/Junit%20_validation_test.PNG?raw=true)
 
 ### Selenium Test Result
 
-![regression_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/validation_tests.PNG?raw=true)
+![selenium_test](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/Selenium_test.PNG?raw=true)
 
 ## Enable Monitoring & Observability
 
@@ -222,6 +223,57 @@ We are ready to run the Deploy stage of the pipeline!
 
 If everything worked as intented, we should see "1 Linux computers connected" in the Agents Management in the Log Analytics Workspace.
 
-![1 Linux Server Connected](images/serverconnected.PNG)
+![1 Linux Server Connected](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/LAW.PNG?raw=true)
 
+### Azure Monitor
 
+Screenshots of the email received when the alert is triggered (including timestamps):
+
+![email_alert](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/alert_email.PNG?raw=true)
+
+The graphs of the resource that the alert was triggered for (including timestamps):
+
+![metric](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/metric.PNG?raw=true)
+
+### Azure Log Analytics
+
+Screenshot of log analytics query and the result sets which shows specific output of the Azure resource:
+
+![rules](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/alert_rule.PNG?raw=true)
+
+The result set include the output of the execution of the Selenium Test Suite.
+
+## Future Work
+- We could cause errors or other scenarios for the AppService/VM and demonstrate those behaviors in the test suites as well as in Azure Monitor and Log Analytics.
+- We could create a VM Scale Set in Terraform and complete each of the steps with the VM Scale set.
+
+## References
+- [Udacity Project Starter Files](https://video.udacity-data.com/topher/2020/June/5ed815bf_project-starter-resources/project-starter-resources.zip)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Outlook](https://outlook.live.com/)
+- [Azure](https://azure.microsoft.com/)
+- [Azure DevOps](https://azure.microsoft.com/services/devops/)
+- [Azure Command Line Interface](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
+- [Terraform Azure Documentation](https://learn.hashicorp.com/collections/terraform/azure-get-started)
+- [Java Development Kit](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+- [Jmeter](https://jmeter.apache.org/download_jmeter.cgi)
+- [Postman](https://www.postman.com/downloads/)
+- [Python](https://www.python.org/downloads/)
+- [Selenium for Python](https://pypi.org/project/selenium/)
+- [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/downloads)
+- [Tutorial: Store Terraform state in Azure Storage](https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage)
+- [Get subscription id with Azure CLI](https://yourazurecoach.com/2020/07/14/get-subscription-id-with-azure-cli/)
+- [Azure Provider: Authenticating using a Service Principal with a Client Secret](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret)
+- [Terraform - Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks)
+- [Install SSH Key Task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/install-ssh-key?view=azure-devops)
+- [Azure CLI Authentication does not work when using the Azure CLI task from Azure DevOps](https://github.com/terraform-providers/terraform-provider-azurerm/issues/3814)
+- [Resources in YAML](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/resources?view=azure-devops&tabs=schema)
+- [Terraform on Azure Pipelines Best Practices](https://julie.io/writing/terraform-on-azure-pipelines-best-practices/)
+- [Use secure files](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops)
+- [Create a Log Analytics workspace with Azure CLI 2.0](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/quick-create-workspace-cli)
+- [Install Log Analytics agent on Linux computers](https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-linux)
+- [Sauce Demo](https://www.saucedemo.com/)
+- [Running collections on the command line with Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
+- [Dummy Rest API Example](http://dummy.restapiexample.com)
+- [Collect custom logs with Log Analytics agent in Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/agents/data-sources-custom-logs)
