@@ -182,7 +182,7 @@ We are ready to run the Provision stage of our pipeline.
 
 If all the configuration was correct, then the terraform apply command should be successful, and our resources should be deployed to the cloud.
 
-![terraformApply](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/pipeline_deployment.PNG)
+![terraformApply](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/terraform_apply.PNG?raw=true)
 
 
 ## Instructions
