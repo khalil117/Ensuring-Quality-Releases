@@ -239,7 +239,7 @@ The graphs of the resource that the alert was triggered for (including timestamp
 
 Screenshot of log analytics query and the result sets which shows specific output of the Azure resource:
 
-![rules](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/alert_rule.PNG?raw=true)
+![rules](https://github.com/khalil117/Ensuring-Quality-Releases/blob/main/images/selenium_log.PNG?raw=true)
 
 The result set include the output of the execution of the Selenium Test Suite.
 
